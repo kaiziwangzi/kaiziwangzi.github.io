@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 宾克斯的美酒
 subtitle:
-description:
+description: 呦嚯嚯嚯 呦嚯嚯嚯
 author: brook
-language: zh-CN
+language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
@@ -63,7 +63,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
+
+avatar: /images/avatar.jpg
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
