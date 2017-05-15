@@ -111,7 +111,7 @@ Note：目前先考虑5.0 L以上
 方法一修改Theme，修改属性android:statusBarColor和android:windowTranslucentStatus，代码如下：
 
 统一的Theme样式123456&amp;lt;style name=&amp;quot;Base.AppTheme&amp;quot; p">
-<meta property="og:updated_time" content="2017-05-15T09:29:31.000Z">
+<meta property="og:updated_time" content="2017-05-15T09:46:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Translucent Status Bar">
 <meta name="twitter:description" content="Android Translucent Status Bar标签： Android
@@ -369,6 +369,7 @@ Note：目前先考虑5.0 L以上
 <blockquote>
 <p>统一的Theme样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;Base.AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</div><div class="line">        &lt;!-- Customize your theme here. --&gt;</div><div class="line">        &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div></pre></td></tr></table></figure></p>
 </blockquote>
+<a id="more"></a>
 <p>因为<code>android:windowTranslucentStatus</code>只有在API-19以上才存在，<code>android:statusBarColor</code>在API-21以上才存在，所以创建values-v21，在此目录下创建styles.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme.Translucent&quot; parent=&quot;Base.AppTheme&quot;&gt;</div><div class="line">        &lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div></pre></td></tr></table></figure></p>
 <p>同时，在values目录下的styles.xml中要加上同样的Theme，不然在低版本的手机上会报找不到AppTheme.Translucent这个主题，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme.Translucent&quot; parent=&quot;Base.AppTheme&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p>最后，还需要在每个布局文件的根布局加上<code>android:fitsSystemWindows=&quot;true&quot;</code>，方便起见，在BaseActivity中，setContentView(int layoutResID)之后，修改每个根布局的fitsSystemWindows属性，setFitsSystemWindows(true);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    public void setContentView(@LayoutRes int layoutResID) &#123;</div><div class="line">        super.setContentView(layoutResID);</div><div class="line">        setFitsSystemWindows();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void setFitsSystemWindows() &#123;</div><div class="line">        ViewGroup contentLayout = (ViewGroup) findViewById(Window.ID_ANDROID_CONTENT);</div><div class="line">        View parentView = contentLayout.getChildAt(0);</div><div class="line">        if (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.KITKAT &amp;&amp; null != parentView) &#123;</div><div class="line">            parentView.setFitsSystemWindows(true);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
@@ -409,8 +410,8 @@ Note：目前先考虑5.0 L以上
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/15/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/03/11/Hexo简单配置/" rel="next" title="Hexo简单配置">
+                <i class="fa fa-chevron-left"></i> Hexo简单配置
               </a>
             
           </div>
@@ -489,7 +490,7 @@ Note：目前先考虑5.0 L以上
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
