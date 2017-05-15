@@ -337,23 +337,24 @@
       
         
           
-            <h1 id="Android-Translucent-Status-Bar"><a href="#Android-Translucent-Status-Bar" class="headerlink" title="Android Translucent Status Bar"></a>Android Translucent Status Bar</h1><p>标签： Android</p>
-<hr>
-<blockquote>
-<ul>
-<li>Note：目前先考虑5.0 L以上</li>
-</ul>
-</blockquote>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>修改Theme，修改属性android:statusBarColor和android:windowTranslucentStatus，代码如下：</p>
-<blockquote>
-<p>统一的Theme样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;Base.AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</div><div class="line">        &lt;!-- Customize your theme here. --&gt;</div><div class="line">        &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>因为<code>android:windowTranslucentStatus</code>只有在API-19以上才存在，<code>android:statusBarColor</code>在API-21以上才存在，所以创建values-v21，在此目录下创建styles.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme.Translucent&quot; parent=&quot;Base.AppTheme&quot;&gt;</div><div class="line">        &lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div></pre></td></tr></table></figure></p>
-<p>同时，在values目录下的styles.xml中要加上同样的Theme，不然在低版本的手机上会报找不到AppTheme.Translucent这个主题，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme.Translucent&quot; parent=&quot;Base.AppTheme&quot;/&gt;</div></pre></td></tr></table></figure></p>
-<p>最后，还需要在每个布局文件的根布局加上<code>android:fitsSystemWindows=&quot;true&quot;</code>，方便起见，在BaseActivity中，setContentView(int layoutResID)之后，修改每个根布局的fitsSystemWindows属性，setFitsSystemWindows(true);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    public void setContentView(@LayoutRes int layoutResID) &#123;</div><div class="line">        super.setContentView(layoutResID);</div><div class="line">        setFitsSystemWindows();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void setFitsSystemWindows() &#123;</div><div class="line">        ViewGroup contentLayout = (ViewGroup) findViewById(Window.ID_ANDROID_CONTENT);</div><div class="line">        View parentView = contentLayout.getChildAt(0);</div><div class="line">        if (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.KITKAT &amp;&amp; null != parentView) &#123;</div><div class="line">            parentView.setFitsSystemWindows(true);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>至此，5.0以上的一些常用的布局方式都会看到半透明的StatusBar，其他的一些新增的布局如<code>DrawerLayout</code>，还需其他考虑，暂且到这。</p>
+          Android Translucent Status Bar标签： Android
 
-          
+
+
+Note：目前先考虑5.0 L以上
+
+
+方法一修改Theme，修改属性android:statusBarColor和android:windowTranslucentStatus，代码如下：
+
+统一的Theme
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/15/Android-Translucent-Status-Bar/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -469,17 +470,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/15/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -595,8 +594,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/11/Hexo简单配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
