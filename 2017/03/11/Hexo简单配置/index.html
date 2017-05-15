@@ -87,16 +87,43 @@
 
 
 
-<meta name="description" content="呦嚯嚯嚯 呦嚯嚯嚯">
+<meta name="description" content="Hexo操作记录标签： hexo
+
+
+
+Note：仅记录使用hexo过程中的需求问题
+
+
+首页显示”阅读全文”当遇到这样的需求：在首页不想大篇幅显示文章内容时，只想显示部分，此时可以如下配置：
+
+在themes/next(主题名称)/_config.yml中修改或添加auto_excerpt，将enable设置为true打开，length属性为需要显示的内容长度12345# Automatical">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo简单配置">
+<meta property="og:title" content="Hexo操作记录">
 <meta property="og:url" content="http://www.codingboy.me/2017/03/11/Hexo简单配置/index.html">
 <meta property="og:site_name" content="宾克斯的美酒">
-<meta property="og:description" content="呦嚯嚯嚯 呦嚯嚯嚯">
-<meta property="og:updated_time" content="2017-05-15T09:21:38.000Z">
+<meta property="og:description" content="Hexo操作记录标签： hexo
+
+
+
+Note：仅记录使用hexo过程中的需求问题
+
+
+首页显示”阅读全文”当遇到这样的需求：在首页不想大篇幅显示文章内容时，只想显示部分，此时可以如下配置：
+
+在themes/next(主题名称)/_config.yml中修改或添加auto_excerpt，将enable设置为true打开，length属性为需要显示的内容长度12345# Automatical">
+<meta property="og:updated_time" content="2017-05-15T10:01:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo简单配置">
-<meta name="twitter:description" content="呦嚯嚯嚯 呦嚯嚯嚯">
+<meta name="twitter:title" content="Hexo操作记录">
+<meta name="twitter:description" content="Hexo操作记录标签： hexo
+
+
+
+Note：仅记录使用hexo过程中的需求问题
+
+
+首页显示”阅读全文”当遇到这样的需求：在首页不想大篇幅显示文章内容时，只想显示部分，此时可以如下配置：
+
+在themes/next(主题名称)/_config.yml中修改或添加auto_excerpt，将enable设置为true打开，length属性为需要显示的内容长度12345# Automatical">
 
 
 
@@ -130,7 +157,7 @@
 
 
 
-  <title> Hexo简单配置 | 宾克斯的美酒 </title>
+  <title> Hexo操作记录 | 宾克斯的美酒 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -280,7 +307,7 @@
             
             
               
-                Hexo简单配置
+                Hexo操作记录
               
             
           </h1>
@@ -331,7 +358,23 @@
       
 
       
-        
+        <h1 id="Hexo操作记录"><a href="#Hexo操作记录" class="headerlink" title="Hexo操作记录"></a>Hexo操作记录</h1><p>标签： hexo</p>
+<hr>
+<blockquote>
+<ul>
+<li>Note：仅记录使用hexo过程中的需求问题</li>
+</ul>
+</blockquote>
+<h3 id="首页显示”阅读全文”"><a href="#首页显示”阅读全文”" class="headerlink" title="首页显示”阅读全文”"></a>首页显示”阅读全文”</h3><p>当遇到这样的需求：<code>在首页不想大篇幅显示文章内容时，只想显示部分</code>，此时可以如下配置：</p>
+<blockquote>
+<p>在<code>themes/next(主题名称)/_config.yml</code>中修改或添加<code>auto_excerpt</code>，将<code>enable</code>设置为true打开，<code>length</code>属性为需要显示的内容长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Automatically Excerpt. Not recommend.</div><div class="line"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</div><div class="line">auto_excerpt:</div><div class="line">  enable: true</div><div class="line">  length: 500</div></pre></td></tr></table></figure></p>
+</blockquote>
+<a id="more"></a>
+<p>此时距离成功还有最后一步，当修改上面的<code>auto_excert</code>之后，是显示了部分内容，但是排版是有问题的，上面的注释已经说明了问题，需要在想要任何显示部分的地方加上<code>&lt;!--more--&gt;</code>，此时可以忽略<code>length</code>，再一次部署之后就是想要的结果。</p>
+<blockquote>
+<p> <b>END</b></p>
+</blockquote>
+
       
     </div>
 
@@ -422,8 +465,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -474,6 +526,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo操作记录"><span class="nav-number">1.</span> <span class="nav-text">Hexo操作记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首页显示”阅读全文”"><span class="nav-number">1.0.1.</span> <span class="nav-text">首页显示”阅读全文”</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

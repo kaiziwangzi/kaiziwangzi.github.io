@@ -96,7 +96,7 @@ Note：目前先考虑5.0 L以上
 
 方法一修改Theme，修改属性android:statusBarColor和android:windowTranslucentStatus，代码如下：
 
-统一的Theme样式123456&amp;lt;style name=&amp;quot;Base.AppTheme&amp;quot; p">
+统一的Theme样式123456&amp;lt;style name=&quot;Base.AppTheme&quot; parent=&quot;The">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Translucent Status Bar">
 <meta property="og:url" content="http://www.codingboy.me/2017/05/15/Android-Translucent-Status-Bar/index.html">
@@ -110,8 +110,8 @@ Note：目前先考虑5.0 L以上
 
 方法一修改Theme，修改属性android:statusBarColor和android:windowTranslucentStatus，代码如下：
 
-统一的Theme样式123456&amp;lt;style name=&amp;quot;Base.AppTheme&amp;quot; p">
-<meta property="og:updated_time" content="2017-05-15T09:46:36.000Z">
+统一的Theme样式123456&amp;lt;style name=&quot;Base.AppTheme&quot; parent=&quot;The">
+<meta property="og:updated_time" content="2017-05-15T10:09:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Translucent Status Bar">
 <meta name="twitter:description" content="Android Translucent Status Bar标签： Android
@@ -123,7 +123,7 @@ Note：目前先考虑5.0 L以上
 
 方法一修改Theme，修改属性android:statusBarColor和android:windowTranslucentStatus，代码如下：
 
-统一的Theme样式123456&amp;lt;style name=&amp;quot;Base.AppTheme&amp;quot; p">
+统一的Theme样式123456&amp;lt;style name=&quot;Base.AppTheme&quot; parent=&quot;The">
 
 
 
@@ -365,14 +365,14 @@ Note：目前先考虑5.0 L以上
 <li>Note：目前先考虑5.0 L以上</li>
 </ul>
 </blockquote>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>修改Theme，修改属性android:statusBarColor和android:windowTranslucentStatus，代码如下：</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>修改Theme，修改属性<code>android:statusBarColor</code>和<code>android:windowTranslucentStatus</code>，代码如下：</p>
 <blockquote>
-<p>统一的Theme样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;Base.AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</div><div class="line">        &lt;!-- Customize your theme here. --&gt;</div><div class="line">        &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>统一的Theme样式<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"Base.AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="xml"></span></div><div class="line">    <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/colorPrimary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/colorPrimaryDark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/colorAccent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
 </blockquote>
 <a id="more"></a>
-<p>因为<code>android:windowTranslucentStatus</code>只有在API-19以上才存在，<code>android:statusBarColor</code>在API-21以上才存在，所以创建values-v21，在此目录下创建styles.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme.Translucent&quot; parent=&quot;Base.AppTheme&quot;&gt;</div><div class="line">        &lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div></pre></td></tr></table></figure></p>
-<p>同时，在values目录下的styles.xml中要加上同样的Theme，不然在低版本的手机上会报找不到AppTheme.Translucent这个主题，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme.Translucent&quot; parent=&quot;Base.AppTheme&quot;/&gt;</div></pre></td></tr></table></figure></p>
-<p>最后，还需要在每个布局文件的根布局加上<code>android:fitsSystemWindows=&quot;true&quot;</code>，方便起见，在BaseActivity中，setContentView(int layoutResID)之后，修改每个根布局的fitsSystemWindows属性，setFitsSystemWindows(true);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    public void setContentView(@LayoutRes int layoutResID) &#123;</div><div class="line">        super.setContentView(layoutResID);</div><div class="line">        setFitsSystemWindows();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void setFitsSystemWindows() &#123;</div><div class="line">        ViewGroup contentLayout = (ViewGroup) findViewById(Window.ID_ANDROID_CONTENT);</div><div class="line">        View parentView = contentLayout.getChildAt(0);</div><div class="line">        if (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.KITKAT &amp;&amp; null != parentView) &#123;</div><div class="line">            parentView.setFitsSystemWindows(true);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>因为<code>android:windowTranslucentStatus</code>只有在API-19以上才存在，<code>android:statusBarColor</code>在API-21以上才存在，所以创建<code>values-v21</code>，在此目录下创建<code>styles.xml</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme.Translucent"</span> <span class="attr">parent</span>=<span class="string">"Base.AppTheme"</span>&gt;</span><span class="xml"></span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentStatus"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:statusBarColor"</span>&gt;</span>@android:color/transparent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>同时，在values目录下的styles.xml中要加上同样的Theme，不然在低版本的手机上会报找不到AppTheme.Translucent这个主题，如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme.Translucent"</span> <span class="attr">parent</span>=<span class="string">"Base.AppTheme"</span>/&gt;</span><span class="undefined"></span></div></pre></td></tr></table></figure></p>
+<p>最后，还需要在每个布局文件的根布局加上<code>android:fitsSystemWindows=&quot;true&quot;</code>，方便起见，在BaseActivity中，<code>setContentView(int layoutResID)</code>之后，修改每个根布局的<code>fitsSystemWindows</code>属性，<code>setFitsSystemWindows(true)</code>;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(@LayoutRes <span class="keyword">int</span> layoutResID)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.setContentView(layoutResID);</div><div class="line">    setFitsSystemWindows();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setFitsSystemWindows</span><span class="params">()</span> </span>&#123;</div><div class="line">    ViewGroup contentLayout = (ViewGroup) findViewById(Window.ID_ANDROID_CONTENT);</div><div class="line">    View parentView = contentLayout.getChildAt(<span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.KITKAT &amp;&amp; <span class="keyword">null</span> != parentView) &#123;</div><div class="line">        parentView.setFitsSystemWindows(<span class="keyword">true</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>至此，5.0以上的一些常用的布局方式都会看到半透明的StatusBar，其他的一些新增的布局如<code>DrawerLayout</code>，还需其他考虑，暂且到这。</p>
 
       
@@ -410,8 +410,8 @@ Note：目前先考虑5.0 L以上
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/Hexo简单配置/" rel="next" title="Hexo简单配置">
-                <i class="fa fa-chevron-left"></i> Hexo简单配置
+              <a href="/2017/03/11/Hexo简单配置/" rel="next" title="Hexo操作记录">
+                <i class="fa fa-chevron-left"></i> Hexo操作记录
               </a>
             
           </div>
